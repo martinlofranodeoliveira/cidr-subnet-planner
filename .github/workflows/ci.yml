@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: python:3.13-slim-bookworm
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Verify Python runtime
+        run: python3 -c 'import sys; assert sys.version_info[:2] == (3, 13); print(sys.version)'
+      - name: Run unit tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Run deterministic offline demos
+        run: |
+          python3 -m cidr_planner demo
+          python3 -m cidr_planner demo --format text

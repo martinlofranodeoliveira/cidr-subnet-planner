@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cidr-subnet-planner"
+version = "0.1.0"
+description = "Deterministic offline IPv4/IPv6 subnet planning, CIDR overlap auditing, and route summarization."
+readme = "README.md"
+requires-python = ">=3.13"
+license = {text = "MIT"}
+authors = [{name = "Lofrano Tecnologia"}]
+dependencies = []
+keywords = ["cidr", "ipv4", "ipv6", "vlsm", "subnet", "network-planning"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Intended Audience :: System Administrators",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: System :: Networking"
+]
+
+[project.urls]
+Homepage = "https://lofranotecnologia.com.br"
+Repository = "https://github.com/martinlofranodeoliveira/cidr-subnet-planner"
+Security = "https://github.com/martinlofranodeoliveira/cidr-subnet-planner/security/advisories/new"
+
+[project.scripts]
+cidr-planner = "cidr_planner.cli:main"
+
+[tool.setuptools]
+packages = ["cidr_planner"]
